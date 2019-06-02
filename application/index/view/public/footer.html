@@ -1,0 +1,47 @@
+<footer>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <p>
+                    Copyright &copy; 2019 <a href="{$config.domain}">{$config.site_name}</a> .All rights reserved.
+                    <br>
+                    Powered By <a href="https://alone88.cn">Alone88</a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+{load href="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"}
+{load href="https://cdn.bootcss.com/popper.js/1.14.7/umd/popper.min.js"}
+{load href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"}
+
+<script>
+    $(function () {
+        $('#domain').bind('keyup',function (event) {
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if(keyCode === 13){
+                search()
+            }
+        })
+
+
+        $('#search').bind('click',function () {
+            search()
+        })
+        function search(){
+            var domain = $('#domain').val();
+            if (!domain) {
+                alert('请输入域名')
+            }
+            window.location.href = "{:url('/')}" + domain
+        }
+
+        $('#captcha').click(function () {
+            $(this).attr('src', "{:url('/verify')}?" + Math.random(6));
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{include file="index@public/header"}
+
+<div class="container">
+    <div class="page-header">
+        <h2 class="text-center">Whois 查询</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm"></div>
+            <div class="col-md-4 col-sm-12 text-center">
+                    <div class="input-group mb-3">
+                        <input type="text" value="{$info.domain}" class="form-control" name="domain" id="domain"
+                               placeholder="请输入你的域名,不带http(s)://">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary"  id="search">查询</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            {// 判断是否有更新时间,才显示更新缓存}
+            {if isset($info.update_time)}
+            <p>您现在查看的是缓存数据,缓存于：<span class="text-danger">{$info.update_time}</span></p>
+
+            <form action="{:url('/up_cache')}" class="form-inline" method="post">
+                <input type="hidden" name="domain" value="{$info.domain}">
+                <img src="{:url('/verify')}" alt="captcha" id="captcha" title="点击刷新验证码">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" placeholder="请输入验证码" name="captcha" >
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">更新缓存</button>
+            </form>
+            {/if}
+        </div>
+    </div>
+
+    <!--Whois 信息-->
+    <div class="row">
+        <div class="col-md-2 col-sm"></div>
+        <div class="col-md-8 col-sm-12">
+            <div class="card">
+                <div class="card-header h-copy">
+                    <span class="float-right">&copy; <a href="{$config.domain}">{$config.site_name}</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="https://alone88.cn">Alone88</a>&nbsp;提供程序支持</span>
+                </div>
+
+                <div class="card-body" id="whois-info" >
+                    <pre>{$info.info|raw}</pre>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-2 col-sm"></div>
+    </div>
+</div>
+{include file="index@public/footer"}

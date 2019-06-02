@@ -1,0 +1,284 @@
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy;<a href="https://alone88.cn"> Alone88</a></span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">确定退出登录吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body"> 是否确认退出？</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="{:url('/admin/logout')}">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Show Domain Whois Info -->
+<div class="modal fade" id="showInfo" tabindex="-2" role="dialog" aria-labelledby="showInfoModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showInfoModal"><span id="domain_title"></span>的Whois</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <pre><p class="card-text"></p></pre>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delte Domain Whois confirm -->
+<div class="modal fade" id="doDelete" tabindex="-2" role="dialog" aria-labelledby="doDeleteModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="doDeleteModal">确认删除吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                       <p class="card-text text-danger">
+                           确认删除吗? 会删除选中的域名信息
+                       </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" type="button" id="do">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Delete All Domain-->
+<div class="modal fade" id="doDelALL" tabindex="-1" role="dialog" aria-labelledby="doDelALLModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="doDelALLModal">确认清空吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-danger"> 该操作不可逆,谨慎操作!!!</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="{:url('/admin/domainClear')}">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Show Modal-->
+<div class="modal fade" id="show" tabindex="-4" role="dialog" aria-labelledby="showModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModal">操作成功</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="showContent"> <p class="text-success">操作成功</p></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" type="button">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+</div>
+<!-- Bootstrap core JavaScript-->
+{load href="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"}
+{load href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"}
+
+
+{load file="/static/js/sb-admin-2.min.js"}
+<!-- Page level plugins -->
+{load href="/static/js/jquery.dataTables.min.js"}
+{load href="/static/js/dataTables.bootstrap4.min.js"}
+{load href="/static/js/dataTables.min.js"}
+
+<script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function () {
+
+        var dInfo = $('#domain-info').DataTable({
+            paging: false,
+            select: {
+                style: 'multi',
+            },
+            dom: 'Blfrtip',//要显示的控件,
+            buttons: [
+                {
+                    className: 'btn btn-info',
+                    text: '查看',
+                    action: function (e, dt,node,config) {
+                       var id = dt.rows('.selected').data()[0]
+                        $.ajax({
+                            url:"{:url('/admin/domainFind')}",
+                            method:'post',
+                            data:{id:id},
+                            success:function (res) {
+                                $('#domain_title').text(res.data.domain)
+                                $('.card-text').eq(0).html(res.data.info)
+                                if(res.status == 1){
+                                    $('#showInfo').modal({
+                                        keyboard:true,
+                                        show:true
+                                    })
+                                }
+                            }
+                        })
+                    },
+                    attr: {
+                        title: '查看选中的信息',
+                        disabled: true,
+                        btnindex: 0
+                    }
+                },
+                {
+                    text: '删除',
+                    className: 'btn btn-warning',
+                    attr: {
+                        title: '删除选中的信息',
+                        disabled: true,
+                        btnindex: 1
+                    },
+                    action: function (e, dt) {
+                        var id = dt.rows('.selected').data();
+                        var ids=[];
+                        for (let i=0;i<id.length;i++){
+                            ids.push(id[i][0])
+                        }
+                        //开启确认模态框
+                        $('#doDelete').modal({
+                            keyboard:true
+                        })
+
+                        // 关闭模态框 并发送Ajax
+                        $('#do').click(function () {
+                            $.ajax({
+                                url:"{:url('/admin/domainDelete')}",
+                                method:'post',
+                                data:{id:ids},
+                                success:function (res) {
+                                    //删除成功
+                                    if(res.code == 1){
+                                        $('#show').modal({
+                                            keyboard: true
+                                        })
+                                        dt.rows('.selected').remove().draw(false)
+                                    }else{
+                                        $('#showModal').text('操作失败')
+                                        $('#showContent').html('<p class="text-warning">操作失败</p>')
+                                        $('#show').modal({
+                                            keyboard: true
+                                        })
+                                    }
+                                }
+                            })
+
+                           $('#doDelete').modal('hide')
+                        })
+                    }
+                },
+                {
+                    text: '清空',
+                    className: 'btn btn-danger',
+                    attr: {
+                        title: '会删除所有的信息,谨慎使用',
+                        disabled: false,
+                        btnindex: 2
+                    },
+                    action: function (e, dt) {
+                        $('#doDelALL').modal();
+                    }
+                }
+            ],
+            stateSave: true,
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+
+                select: {
+                    rows: "已选择 %d 行"
+                }
+            }
+        });
+        //选择时触发事件
+        var btn = $("[btnindex]")
+        dInfo.on('select', function (e, dt, type, indexes) {
+            var length = dt.rows('.selected').data().length;
+            $("[btnindex]").prop('disabled', false)
+            if (length > 1) {
+                btn.eq(0).prop('disabled', true)
+            }
+        }).on('deselect', function (e, dt) {
+            var length = dt.rows('.selected').data().length;
+            if (length == 0) {
+                btn.eq(0).prop('disabled', true)
+                btn.eq(1).prop('disabled', true)
+            } else if (length == 1){
+                btn.eq(0).prop('disabled', false)
+            }
+        })
+    })
+</script>
+</body>
+</html>

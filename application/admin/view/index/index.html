@@ -1,0 +1,120 @@
+{extend name="base" /}
+
+{block name="container"}
+<div class="row">
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Whois 查询记录</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{$infoCount}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Whois 查询服务器数量</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{$serverCount}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">当前站点信息</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <th scope="col">#</th>
+                    <th>描述</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">网站名称</th>
+                        <td>{$config.site_name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">网站域名</th>
+                        <td>{$config.domain}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">网站关键字</th>
+                        <td>{$config.keywords}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">网站描述</th>
+                        <td >{$config.description}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">联系方式</th>
+                        <td>{$config.contact|substr=0,20}...</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">自动Whois</th>
+                        <td>{$config.is_auto?'开启':'关闭'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">开启本地请求缓存</th>
+                        <td>{$config.is_quest_cache?'开启':'关闭'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">缓存时间(秒)</th>
+                        <td>{$config.quest_time}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">当前用户信息</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <th scope="col">#</th>
+                    <th>描述</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{$info.uid}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">用户名</th>
+                        <td>{$info.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">邮箱</th>
+                        <td>{$info.email}</td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

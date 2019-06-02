@@ -1,0 +1,359 @@
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy;<a href="https://alone88.cn"> Alone88</a></span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">确定退出登录吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body"> 是否确认退出？</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="{:url('/admin/logout')}">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!--Add Whois Modal-->
+    <div class="modal fade" id="addWhoisServer" tabindex="-2" role="dialog" aria-labelledby="addWhoisServerModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addWhoisServerModal">添加Whois服务器</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('/admin/whoisAddCheck')}" class="user" method="post">
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" name="tld" class="form-control form-control-user" id="tld"
+                                   placeholder="域名后缀">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <input type="text" name="server" class="form-control form-control-user" id="server"
+                                   placeholder="Whois服务器">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <select name="state" id="state" class="form-control">
+                                <option value="1">启用</option>
+                                <option value="0">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <!--delete Whois Modal-->
+    <div class="modal fade" id="whoisDelete" tabindex="-3" role="dialog" aria-labelledby="whoisDeleteTitle"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="whoisDeleteTitle">确认删除吗?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">确认删除吗？</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" id="delete" data-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Whois update momal-->
+    <div class="modal fade" id="whoisUpdate" tabindex="-2" role="dialog" aria-labelledby="whoisUpdateModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="whoisUpdateModal">编辑</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{:url('/admin/whoisUpdate')}" class="user" method="post" id="whois_edit">
+                        <input type="hidden" name="id" id="id_up">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="text" name="tld" value="" class="form-control form-control-user"
+                                       id="tld_up"
+                                       placeholder="域名后缀">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 md-3 md-sm-0">
+                                <input type="text" name="server" class="form-control form-control-user" id="server_up"
+                                       placeholder="Whois服务器">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 md-3 md-sm-0">
+                                <select name="state" id="state_up" class="form-control">
+                                    <option value="1">启用</option>
+                                    <option value="0">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                <!--</div>-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" id="update">更新</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    <!--Add lot Whois Modal-->
+    <div class="modal fade" id="add-lot-whois" tabindex="-2" role="dialog" aria-labelledby="add-lot-whois-modal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-lot-whois-modal">添加Whois服务器</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('/admin/whoisLotAdd')}" class="user" method="post">
+                    <div class="form-group row">
+                        <textarea name="whois" class="form-control" rows="3" required></textarea>
+                        <b id="addlotwhois"  class="form-text text-muted">
+                            批量添加Whois,格式: <span class="text-dark">com,whois.nic.com|xyz,whois.nic.xyz</span>
+                            <br>
+                            后缀和whois服务器用英文逗号隔开,用|隔开一组Whois
+                            <br>
+                            添加默认是启用状态,添加一条数据别使用这个
+                        </b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--Show Modal-->
+    <div class="modal fade" id="show" tabindex="-4" role="dialog" aria-labelledby="showModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModal">操作成功</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="showContent"><p class="text-success">操作成功</p></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" type="button">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- Bootstrap core JavaScript-->
+{load href="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"}
+{load href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"}
+
+
+{load file="/static/js/sb-admin-2.min.js"}
+<!-- Page level plugins -->
+{load href="/static/js/jquery.dataTables.min.js"}
+{load href="/static/js/dataTables.bootstrap4.min.js"}
+{load href="/static/js/dataTables.min.js"}
+
+<script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function () {
+
+        //创建按钮
+        $.fn.dataTable.ext.buttons.edit = {
+            className: 'btn btn-primary',
+            attr: {
+                title: 'title',
+                disabled: true
+            },
+            action: function (e, dt, node, config) {
+                var tld = dt.row('.selected').data().tld;
+                var server = dt.row('.selected').data().server;
+                var id = dt.row('.selected').data().id;
+                $('#tld_up').val(tld)
+                $('#server_up').val(server)
+                $('#id_up').val(id)
+
+                $('#whoisUpdate').modal({
+                    keyboard: true
+                })
+            }
+        }
+        $.fn.dataTable.ext.buttons.delete = {
+            className: 'btn btn-danger',
+            attr: {
+                disabled: true,
+                'data-toggle': 'modal',
+                'data-target': '#whoisDelete'
+            },
+            action: function (e, dt, node, config) {
+                var id = dt.rows('.selected').data()
+                var ids = []
+                for (i = 0; i < id.length; i++) {
+                    ids.push(id[i].id)
+                }
+                $('#delete').click(function () {
+                    $.ajax({
+                        url: "{:url('/admin/whoisDelete')}",
+                        method: 'post',
+                        data: {id: ids},
+                        success: function (res) {
+                            if (res.code == 1) {
+                                // 弹出模态框
+                                $('#show').modal({
+                                    keyboard: true
+                                })
+                                //删除成功重新加载数据
+                                dt.ajax.reload()
+                            } else {
+                                $('#showModal').text('操作失败')
+                                $('#showContent').text('操作失败')
+                                $('#show').modal({
+                                    keyboard: true
+                                })
+                            }
+                        }
+                    })
+                })
+
+            }
+        }
+
+
+        // Whois-server table
+        var table = $('#whois-server').DataTable({
+            // serverSide: true,
+            ajax: "{:url('/admin/whoisJson')}",
+            columns: [
+                {data: 'id'},
+                {data: 'tld'},
+                {data: 'server'},
+                {data: 'state'},
+                {data: 'create_time'},
+                {data: 'update_time'}
+            ],
+            columnDefs:[
+                {
+                    "targets":[0,2,3,4,5],
+                    "searchable":false
+                }
+            ],
+            select: {
+                style: 'multi'
+            },
+            dom: 'Bfrtipl',//要显示的控件,
+            buttons: [
+                {
+                    extend: 'edit',
+                    text: '编辑',
+                }
+                , {
+                    extend: 'delete',
+                    text: '删除',
+                },
+            ],
+            fnCreatedRow: function () {
+            }
+            , deferRender: true,
+            stateSave: true,
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            }
+        });
+
+        //选择时触发事件
+        table.on('select', function (e, dt, type, indexs) {
+            $('.dt-button').attr('disabled', false)
+            if (dt.rows('.selected').data().length > 1) {
+                $('.dt-button').eq(0).attr('disabled', true)
+            }
+        }).on('deselect', function (e, dt, type, indexs) {
+            var length = dt.rows('.selected').data().length
+            if (length == 0) {
+                $('.dt-button').attr('disabled', true)
+            } else if (length == 1) {
+                $('.dt-button').eq(0).attr('disabled', false)
+            }
+        })
+    });
+</script>
+</body>
+</html>

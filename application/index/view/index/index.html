@@ -1,0 +1,26 @@
+{extend name="base"}
+
+{block name="body"}
+
+
+<div class="container">
+    <div class="page-header">
+        <h2 class="text-center">Whois 查询</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm"></div>
+            <div class="col-md-4 col-sm-12 text-center">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="domain" id="domain"
+                               placeholder="请输入你的域名,不带http(s)://">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary"  id="search">查询</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm"></div>
+        </div>
+    </div>
+
+</div>
+
+{/block}

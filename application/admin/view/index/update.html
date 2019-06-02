@@ -1,0 +1,77 @@
+{extend name="base" /}
+
+
+{block name="container"}
+<h1 class="h3 mb-2 text-gray-800">个人信息修改</h1>
+<div class="row">
+    <div class="col-sm-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">当前用户信息</h6>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th scope="col">#</th>
+                        <th>描述</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Id</th>
+                            <td>{$info.uid}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">用户名</th>
+                            <td>{$info.name}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">邮箱</th>
+                            <td>{$info.email}</td>
+                        </tr>
+                        <tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">信息修改</h6>
+            </div>
+            <div class="card-body">
+                <form class="user" action="{:url('/admin/checkUpdate')}" method="post">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label text-primary">邮箱：</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="email" value="{$info.email}" class="form-control " id="email" placeholder="邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label text-primary">用户名：</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="name" value="{$info.name}" class="form-control " id="name" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pass" class="col-sm-3 col-form-label text-primary">密码：</label>
+                        <div class="col-sm-6">
+                            <input type="password" name="pass" class="form-control" id="pass" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pass_confirm" class="col-sm-3 col-form-label text-primary">确认密码：</label>
+                        <div class="col-sm-6">
+                            <input type="password" name="pass_confirm" class="form-control" id="pass_confirm" placeholder="确认密码">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        确认修改
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

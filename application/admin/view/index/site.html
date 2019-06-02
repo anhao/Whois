@@ -1,0 +1,137 @@
+{extend name="base" /}
+
+{block name="container" }
+<h1 class="h3 mb-2 text-gray-800">站点信息</h1>
+<!--<div class="row">-->
+    <!--<div class="col-sm-12">-->
+        <!--<div class="card shadow mb-4">-->
+            <!--<div class="card-header py-3">-->
+                <!--<h6 class="m-0 font-weight-bold text-primary">当前站点信息</h6>-->
+            <!--</div>-->
+            <!--<div class="card-body">                -->
+               <!--<table class="table table-bordered">-->
+                  <!--<thead>-->
+                  <!--<th scope="col">#</th>-->
+                  <!--<th>描述</th>-->
+                  <!--</thead>-->
+                   <!--<tbody>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">网站名称</th>-->
+                       <!--<td>{$config.site_name}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">网站域名</th>-->
+                       <!--<td>{$config.domain}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">网站关键字</th>-->
+                       <!--<td>{$config.keywords}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">网站描述</th>-->
+                       <!--<td >{$config.description}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">联系方式</th>-->
+                       <!--<td>{$config.contact}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">自动Whois</th>-->
+                       <!--<td>{$config.is_auto?'开启':'关闭'}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">开启本地请求缓存</th>-->
+                       <!--<td>{$config.is_quest_cache?'开启':'关闭'}</td>-->
+                   <!--</tr>-->
+                   <!--<tr>-->
+                       <!--<th scope="row">缓存时间(秒)</th>-->
+                       <!--<td>{$config.quest_time}</td>-->
+                   <!--</tr>-->
+                   <!--</tbody>-->
+               <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="col-sm-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">信息修改</h6>
+            </div>
+            <div class="card-body">
+                <form class="user" action="{:url('/admin/checkSiteUpdate')}" method="post">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">网站名称：</label>
+                            <input type="text" name="site_name" value="{$config.site_name}" class="form-control form-control-user" id="email" placeholder="网站名称">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">网站域名：</label>
+                            <input type="text" name="domain" value="{$config.domain}" class="form-control form-control-user" id="name" placeholder="网站域名">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">网站关键字：</label>
+                            <input type="text" name="keywords" value="{$config.keywords}" class="form-control form-control-user" id="keywords" placeholder="网站关键字">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">网站描述：</label>
+                            <input type="text" name="description" value="{$config.description}" class="form-control form-control-user" id="description" placeholder="网站描述">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">联系信息：</label>
+                            <textarea type="text" name="contact" class="form-control"  placeholder="联系方式">{$config.contact}</textarea>
+                            <small id="contact_help" class="form-text text-muted">支持HTML代码</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">自动根据域名获取Whois服务器：</label>
+                            <select name="is_auto" id="" class="form-control">
+                               {if $config.is_auto==1 }
+                                <option value="1">开启</option>
+                                <option value="0">关闭</option>
+                                {else /}
+                                <option value="0">关闭</option>
+                                <option value="1">开启</option>
+                                {/if}
+                            </select>
+                            <small id="is_auto_help" class="form-text text-muted">开启了之后会自动根据域名的后缀获取Whois服务器</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">是否开启请求缓存：</label>
+                            <select name="is_quest_cache" id="is_quest_cache" class="form-control">
+                                {if $config.is_quest_cache == 1 }
+                                <option value="1">开启</option>
+                                <option value="0">关闭</option>
+                                {else /}
+                                <option value="0">关闭</option>
+                                <option value="1">开启</option>
+                                {/if}
+                            </select>
+                            <small id="is_quest_cahce_help" class="form-text text-muted">开启了之后同一个域名在多少秒内,如果再次查询则获取的就是本地的缓存,可有效控制资源请求</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="" class="col-form-label">缓存时间(秒)</label>
+                            <input type="number" name="quest_time" id="quest_time" value="{$config.quest_time}" class="form-control form-control-user">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        确认修改
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+{/block}

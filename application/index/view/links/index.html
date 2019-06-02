@@ -1,0 +1,21 @@
+{extend name="base" /}
+
+
+{block name="body"}
+<div class="container">
+    <div class="page-header">
+        <h2 class="text-center">友情链接</h2>
+        <hr>
+    </div>
+
+    <ul class="nav">
+
+    {volist name="links" id="link"}
+        <li class="nav-item">
+            <a href="{$link.link}" target="_blank"title="{$link.desc}" class="text-dark nav-link link-hove">{$link.name}</a>
+        </li>
+    {/volist}
+    </ul>
+</div>
+
+{/block}

@@ -1,0 +1,52 @@
+{extend name="base"}
+
+{block name="container"}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Whois</h1>
+<p class="mb-4">
+    你可以在这里添加删除修改Whois 服务器
+</p>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Whois 服务器列表
+            <button class="float-right btn btn-primary btn-group" id="add_whois" data-toggle="modal" data-target="#addWhoisServer"> 添加Whois服务器</button>
+            <button class="float-right btn btn-primary btn-group" id="add_whois_lot" data-toggle="modal" data-target="#add-lot-whois"> 批量添加</button>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="whois-server" width="100%" cellspacing="0">
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>后缀</th>
+                    <th>查询服务器</th>
+                    <th>状态</th>
+                    <th>添加时间</th>
+                    <th>更新时间</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>后缀</th>
+                    <th>查询服务器</th>
+                    <th>状态</th>
+                    <th>添加时间</th>
+                    <th>更新时间</th>
+                </tr>
+                </tfoot>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{/block}
+{block name="footer"}
+{include file="public/sFooter"}
+{/block}

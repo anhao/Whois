@@ -1,0 +1,247 @@
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy;<a href="https://alone88.cn"> Alone88</a></span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">确定退出登录吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body"> 是否确认退出？</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="{:url('/admin/logout')}">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--add links-->
+<div class="modal fade" id="link-add" tabindex="-1" role="dialog" aria-labelledby="link-add-modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="link-add-modal">添加友情链接?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('/admin/linksAdd')}" class="user" method="post">
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" name="name" class="form-control form-control-user" id="name"
+                                   placeholder="名称">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <input type="text" name="link" class="form-control form-control-user" id="links"
+                                   placeholder="链接">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <input type="text" name="desc" class="form-control form-control-user" placeholder="描述">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" type="submit">确认</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  edit links -->
+<div class="modal fade" id="link-update" tabindex="-1" role="dialog" aria-labelledby="link-update-modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="link-update-modal">编辑友情链接</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('/admin/linkupdate')}" class="user" method="post">
+                    <input type="hidden" name="id" id="id-up">
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" id="name-up" name="name" value="" class="form-control form-control-user"
+                                   placeholder="名称">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <input type="text" id="link-up" name="link" value="" class="form-control form-control-user"
+                                   placeholder="链接">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 md-3 md-sm-0">
+                            <input type="text" id="link-desc" name="desc" value="desc"
+                                   class="form-control form-control-user" placeholder="描述">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" type="submit">确认</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--delete links-->
+<div class="modal fade" id="link-del" tabindex="-3" role="dialog" aria-labelledby="link-del-modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="link-del-modal">确认删除吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">确认删除吗？</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="delete" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Show Modal-->
+<div class="modal fade" id="show" tabindex="-4" role="dialog" aria-labelledby="showModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModal">操作成功</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="showContent"><p class="text-success">操作成功</p></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" type="button">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+<!-- Bootstrap core JavaScript-->
+{load href="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"}
+{load href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"}
+
+
+{load file="/static/js/sb-admin-2.min.js"}
+<!-- Page level plugins -->
+{load href="/static/js/jquery.dataTables.min.js"}
+{load href="/static/js/dataTables.bootstrap4.min.js"}
+{load href="/static/js/dataTables.min.js"}
+
+<script>
+    $(function () {
+        $('#links-table').DataTable({
+            dom: '<"btn-group"B>frt',
+            select: true,
+            column: [
+                {data: 'id'},
+                {data: 'name'},
+                {data: 'link'},
+                {data: 'desc'}
+            ],
+            buttons: [
+                {
+                    className: 'btn btn-primary ',
+                    text: '添加',
+                    action: function () {
+                        $('#link-add').modal()
+                    }
+                },
+                {
+                    className: 'btn btn-info ',
+                    text: '编辑',
+                    attr: {
+                        'type': 'button'
+                    },
+                    action: function (e, dt) {
+                        $('#id-up').val(dt.row('.selected').data()[0])
+                        $('#name-up').val(dt.row('.selected').data()[1])
+                        $('#link-up').val(dt.row('.selected').data()[2])
+                        $('#desc-up').val(dt.row('.selected').data()[3])
+                        $('#link-update').modal()
+                    }
+                },
+                {
+                    className: 'btn btn-warning ',
+                    text: '删除',
+                    action: function (e,dt) {
+                        var flag =true
+                        try{
+                            var id = dt.row('.selected').data()[0]
+                        }catch(e){
+                            flag =false
+                            alert('您沒有选择要删除的友链')
+                        }
+                        if(flag){
+                            $('#link-del').modal()
+                            $('#delete').click(function () {
+                                $.ajax({
+                                    url:"{:url('/admin/linkdel')}",
+                                    method:'post',
+                                    data:{id:id},
+                                    success:function (res) {
+                                        if(res.code == 1){
+                                            $('#show').modal()
+                                            dt.row('.selected').remove().draw(false)
+                                        }else{
+                                            $('#showModal').text('删除失败');
+                                            $('#showContent').html('删除失败');
+                                            $('#show').modal()
+                                        }
+                                    }
+                                })
+                            })
+                        }
+
+                    }
+                },
+            ]
+        })
+
+    })
+</script>
+</body>
+</html>
