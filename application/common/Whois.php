@@ -100,13 +100,14 @@ class Whois
 
     private function domianCheck($domain)
     {
+
         $pattern1 = '/^([-a-z0-9]{1,255})\.([-a-z0-9\.]{2,50})$/i';
         $pattern2 = '/^(www)\.([-a-z0-9]{1,255})\.([-a-z0-9\.]{2,50})$/i';
-        if (preg_match($pattern1, $domain, $matches)) {
-            $matches = [$matches[1], $matches[2]];
-            return $matches;
-        } else if (preg_match($pattern2, $domain, $matches)) {
+        if (preg_match($pattern2, $domain, $matches)) {
             $matches = [$matches[2], $matches[3]];
+            return $matches;
+        } else if (preg_match($pattern1, $domain, $matches)) {
+            $matches = [$matches[1], $matches[2]];
             return $matches;
         } else {
             return false;
