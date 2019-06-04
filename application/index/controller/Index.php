@@ -45,8 +45,7 @@ class Index extends Base
     public function query(Request $request)
     {
 
-        $domain = $request->param('domain');
-        $up_cache = $request->get('up_cache');
+        $domain = urldecode($request->param('domain'));
         $is_quest_cache = $this->conifg['is_quest_cache'];
         $quest_cache_time = $this->conifg['quest_time'];
 
@@ -55,9 +54,9 @@ class Index extends Base
         }
 
         if (true == $is_quest_cache) {
-            $info = $this->isQuestCache($domain, $up_cache, $quest_cache_time);
+            $info = $this->isQuestCache($domain, $quest_cache_time);
         } else {
-            $info = $this->noQuestCache($domain, $up_cache);
+            $info = $this->noQuestCache($domain);
         }
 
         $this->view->assign('page_title',$domain);
