@@ -1,0 +1,16 @@
+body{
+    overflow-wrap: break-spaces;
+    overflow-x: hidden;
+}
+pre{
+    white-space: pre-wrap;
+}
+#footer{
+    margin-top: 20px;
+}
+.link-hove{
+    color: #f3a199;
+}
+.h-copy{
+    font-size: 14px;
+}

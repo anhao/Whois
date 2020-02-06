@@ -2,6 +2,10 @@
 基于Thinkphp+Mysql 的域名Whois 信息查询系统
 理论上支持所有后缀,支持中文IDN后缀
 
+# 更新
+2020.02.06 更新，程序缺少了文件，导致部署不成功！现在已更新！
+
+
 # 使用
  - 把`public` 设置为应用目录
  - 上传数据库,config/database.php 配置数据库
@@ -25,14 +29,9 @@
 
 `nginx`
 ```nginx
-if (!-d $request_filename){
-	set $rule_0 1$rule_0;
+location / {
+	if (!-e $request_filename){
+		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+	}
 }
-if (!-f $request_filename){
-	set $rule_0 2$rule_0;
-}
-if ($rule_0 = "21"){
-	rewrite ^/(.*)$ /index.php/$1 last;
-}
-
 ```
